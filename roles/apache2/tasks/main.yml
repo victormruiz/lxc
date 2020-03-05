@@ -30,10 +30,3 @@
 - name: delete index.html
   shell:
     cmd: rm /var/www/html/index.html
-
-#- name: Copy wp-settings
-#  copy: > 
-#    src=wp-settings.php
-#    dest=/var/www/html
-#  notify:
-#  - restart apache2
