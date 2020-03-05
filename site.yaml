@@ -1,0 +1,9 @@
+- hosts: apache
+  become: true
+  roles:
+   - role: apache2
+
+- hosts: mariadb
+  become: true
+  roles:
+   - role: mariadb

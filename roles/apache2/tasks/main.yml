@@ -1,0 +1,28 @@
+- name: install apache2
+  apt:
+    pkg:
+    - apache2
+
+- name: install php and php-mysql
+  apt:
+    pkg:
+    - php
+    - php-mysql
+    - php-fpm
+    - php-gd
+
+- name: Download wordpress
+  shell:
+    cmd: wget https://es.wordpress.org/latest-es_ES.tar.gz
+    
+- name: untar rowdpress
+  shell:
+    cmd: tar -xvzf latest-es_ES.tar.gz
+   
+- name: copy wordpress
+  shell:
+    cmd: mv wordpress/* /var/www/html
+    
+- name: change own documentroot
+  shell:
+    cmd: chown -R www-data:www-data /var/www/html
