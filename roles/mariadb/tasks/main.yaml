@@ -10,10 +10,17 @@
     state: present
 
 - name: Create database user with name 'wordpress' and password 'wordpress'
-  with_items:
-  - bind-address=0.0.0.0
   mysql_user:
-    name: wordpress
-    password: wordpress
-    priv: 'wordpress_db.*:ALL'
-    state: present
+    name=wordpress
+    password=wordpress
+    priv='wordpress_db.*:ALL'
+    host=%
+    state=present
+
+- name: Copy conf bind address
+  copy: > 
+    src=50-server.cnf
+    dest=/etc/mysql/mariadb.conf.d/50-server.cnf
+  notify:
+  - restart mariadb
+

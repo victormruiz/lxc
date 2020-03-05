@@ -26,3 +26,8 @@
 - name: change own documentroot
   shell:
     cmd: chown -R www-data:www-data /var/www/html
+
+- name: delete index.html
+  shell:
+    cmd: rm /var/www/html/index.html
+
